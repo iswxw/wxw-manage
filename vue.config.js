@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: "./",
-  outputDir: "bs-manager",
+  outputDir: "wxw-manage",
   assetsDir: "static",
   productionSourceMap: false
   // devServer: {
