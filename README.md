@@ -1,44 +1,73 @@
-# wxw-manage项目
+# wxw-manage
 
-<a href="https://github.com/vuejs/vue">
-    <img src="https://img.shields.io/badge/vue-2.6.10-brightgreen.svg" alt="vue">
-  </a>
-  <a href="https://github.com/ElemeFE/element">
-    <img src="https://img.shields.io/badge/element--ui-2.8.2-brightgreen.svg" alt="element-ui">
-  </a>
-  <a href="https://lin-xin.gitee.io/example/work/#/donate">
-    <img src="https://img.shields.io/badge/%24-donate-ff69b4.svg" alt="donate">
-  </a>
+  [![后台项目](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE-mall-blue.svg)](https://github.com/macrozheng/mall)  [![码云](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg)](https://gitee.com/macrozheng/mall-admin-web)
 
-基于 Vue + Element UI 的后台管理系统解决方案。[线上地址](https://lin-xin.gitee.io/example/work/)
 
 
 ## 前言
 
-该方案作为一套多功能的后台框架模板，适用于绝大部分的后台管理系统（Web Management System）开发。基于 vue.js，使用 vue-cli3 脚手架，引用 Element UI 组件库，方便开发快速简洁好看的组件。分离颜色样式，支持手动切换主题色，而且很方便使用自定义主题色。
+该项目为前后端分离项目的前端部分，后端项目`wxw-blog`地址：[传送门](https://github.com/GitHubWxw/wxw-blog) 
 
-## 功能
+## 项目介绍
 
--   [x] Element UI
--   [x] 登录/注销
--   [x] Dashboard
--   [x] 表格
--   [x] Tab 选项卡
--   [x] 表单
--   [x] 图表 :bar_chart:
--   [x] 富文本编辑器
--   [x] markdown 编辑器 
--   [x] 图片拖拽/裁剪上传
--   [x] 支持切换主题色 :sparkles:
--   [x] 列表拖拽排序
--   [x] 权限测试
--   [x] 404 / 403
--   [x] 三级菜单
--   [x] 自定义图标
--   [x] 可拖拽弹窗
--   [x] 国际化
+` wxw-manage` 是一个综合后台管理系统的前端项目，基于Vue+Element实现。主要包括实际学习过程中积累的功能。
 
-## 安装步骤
+## 项目演示
+
+项目在线演示地址：<http://www.macrozheng.com/admin/>  
+
+
+
+## 技术选型
+
+| 技术              | 说明                  | 官网                                              |
+| ----------------- | --------------------- | ------------------------------------------------- |
+| Vue               | 前端框架              | <https://vuejs.org/>                              |
+| Vue-router        | 路由框架              | <https://router.vuejs.org/>                       |
+| Vuex              | 全局状态管理框架      | <https://vuex.vuejs.org/>                         |
+| Element           | 前端UI框架            | <https://element.eleme.io/>                       |
+| Axios             | 前端HTTP框架          | <https://github.com/axios/axios>                  |
+| v-charts          | 基于Echarts的图表框架 | <https://v-charts.js.org/>                        |
+| Js-cookie         | cookie管理工具        | <https://github.com/js-cookie/js-cookie>          |
+| nprogress         | 进度条控件            | <https://github.com/rstacruz/nprogress>           |
+| vue-element-admin | 项目脚手架参考        | <https://github.com/PanJiaChen/vue-element-admin> |
+
+## 项目布局
+
+```vue
+src -- 源码目录
+├── api -- axios网络请求定义
+├── assets -- 静态图片资源文件
+├── components -- 通用组件封装
+├── icons -- svg矢量图片文件
+├── router -- vue-router路由配置
+├── store -- vuex的状态管理
+├── styles -- 全局css样式
+├── utils -- 工具类
+└── views -- 前端页面
+    ├── home -- 首页
+    ├── layout -- 通用页面加载框架
+    ├── login -- 登录页
+    ├── oms -- 订单模块页面
+    ├── pms -- 商品模块页面
+    └── sms -- 营销模块页面
+```
+
+## 搭建步骤
+
+- 下载node并安装：<https://nodejs.org/dist/v12.14.0/node-v12.14.0-x64.msi>;
+- 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，搭建请参考后端项目[传送门](https://github.com/macrozheng/mall);
+- 访问在线接口无需搭建后台环境，只需将`config/dev.env.js`文件中的`BASE_API`改为[http://admin-api.macrozheng.com](http://admin-api.macrozheng.com/)即可;
+- 如果你对接的是[mall-swarm](https://github.com/macrozheng/mall-swarm)微服务后台的话，所有接口都需要通过网关访问，需要将`config/dev.env.js`文件中的`BASE_API`改为<http://localhost:8201/mall-admin>；
+- 克隆源代码到本地，使用IDEA打开，并完成编译;
+- 在IDEA命令行中运行命令：npm install,下载相关依赖;
+- 在IDEA命令行中运行命令：npm run dev,运行项目;
+- 访问地址：[http://localhost:8090](http://localhost:8090/) 即可打开后台管理系统页面;
+- 具体部署过程请参考：[mall前端项目的安装与部署](http://www.macrozheng.com/#/deploy/mall_deploy_web)
+- `注意`：如果遇到无法运行npm命令，需要配置npm的环境变量，如在path变量中添加：C:\Users\zhenghong\AppData\Roaming\npm;
+- `注意`：如果遇到npm install无法成功下载依赖，请参考[使用Jenkins一键打包部署前端应用，就是这么6！](http://www.macrozheng.com/#/reference/jenkins_vue) 中`遇到的坑`部分。
+
+## 项目预览
 
 ```
 git clone https://github.com/GitHubWxw/wxw-manage.git      // 把模板下载到本地
@@ -52,9 +81,9 @@ npm run serve
 npm run build
 ```
 
-## 组件使用说明与演示
+## 插件概述
 
-### vue-schart
+**vue-schart** 
 
 vue.js 封装 sChart.js 的图表组件。访问地址：[vue-schart](https://github.com/linxin/vue-schart)
 
@@ -108,9 +137,9 @@ vue.js 封装 sChart.js 的图表组件。访问地址：[vue-schart](https://gi
 </style>
 ```
 
-## 其他注意事项
+## 注意事项
 
-### 一、如果我不想用到上面的某些组件呢，那我怎么在模板中删除掉不影响到其他功能呢？
+### 一、组件过滤
 
 举个栗子，我不想用 Vue-Quill-Editor 这个组件，那我需要分四步走。
 
@@ -140,7 +169,7 @@ npm un vue-quill-editor -S
 
 完成。
 
-### 二、如何切换主题色呢？
+### 二、切换主题
 
 第一步：打开 src/main.js 文件，找到引入 element 样式的地方，换成浅绿色主题。
 
@@ -159,29 +188,37 @@ import 'element-ui/lib/theme-default/index.css'; // 默认主题
 
 第三步：打开 src/components/common/Sidebar.vue 文件，找到 el-menu 标签，把 background-color/text-color/active-text-color 属性去掉即可。
 
-### (1) vue+markdown编辑器mavonEditor
+(1) vue+markdown编辑器mavonEditor
+
 - [mavonEditor使用教程](https://blog.csdn.net/sayoko06/article/details/90675535)  
 
-### (2) vue-schart基于Vue的echart图表
+(2) vue-schart基于Vue的echart图表
+
 - [vue-schart图表使用教程](https://www.cnblogs.com/chenguiya/p/9267359.html)
 
-### (3) vue-quill-editor基于Vue的富文本编辑器
+(3) vue-quill-editor基于Vue的富文本编辑器
+
 - [vue-quill-editor富文本编辑器使用教程](https://www.jianshu.com/p/33c8a0fea63d)
 
-### (4) vuedraggable实现VUE中组件拖拽
+(4) vuedraggable实现VUE中组件拖拽
+
 - [vuedraggable实现VUE中组件拖拽](https://www.jianshu.com/p/e8ff1e1cafb1)
 
-### (5) vue-cropperjs实现图片裁剪功能
+(5) vue-cropperjs实现图片裁剪功能
+
 - [官方文档](http://npm.taobao.org/package/vue-cropperjs)
 - [实例效果](https://agontuk.github.io/vue-cropperjs/)
 - [使用教程](https://www.jianshu.com/p/85a52da879bb)
 - 方案：vue如何实现裁剪/截图功能的两种方式（ 1. vue-cropper 2. cropper.js ）
 
-### (6) axios基于 promise 的 HTTP库
+(6) axios基于 promise 的 HTTP库
+
 - [基于 promise 的 HTTP库使用教程](https://www.jianshu.com/p/d771bbc61dab)
 
-### (7) Babel-polyfill 的作用
+(7) Babel-polyfill 的作用
+
 - [Babel-polyfill 的作用说明](https://www.jianshu.com/p/67dedc89b13d)
 
-### (8) json-server基于Vue的mock数据工具
+(8) json-server基于Vue的mock数据工具
+
 - [Json使用教程](https://www.jianshu.com/p/bdbbd3314cf3)

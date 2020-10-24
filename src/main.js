@@ -1,3 +1,9 @@
+/*
+ * @Descripttion: 
+ * @version: V 1.0
+ * @Author: wxw
+ * @Date: 2020-10-22 00:09:56
+ */
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -24,7 +30,7 @@ const i18n = new VueI18n({
 
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} | bs-manager`;
+  document.title = `${to.meta.title} | bs-manage`;
   const role = localStorage.getItem("ms_username");
   if (!role && to.path !== "/login") {
     next("/login");
