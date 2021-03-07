@@ -1,13 +1,21 @@
 <template>
   <div class="header">
-    <!-- 折叠按钮 -->
+    <!-- 侧边栏折叠按钮 -->
     <div class="collapse-btn" @click="collapseChage">
       <i v-if="!collapse" class="el-icon-s-fold"></i>
       <i v-else class="el-icon-s-unfold"></i>
     </div>
+    <!-- 系统名称 -->
     <div class="logo">后台管理系统</div>
     <div class="header-right">
       <div class="header-user-con">
+        <!-- 源码 -->
+        <div class="btn-github">
+          <!-- 鼠标悬浮提示 -->
+          <el-tooltip effect="dark" content="GitHub源码" placement="bottom">
+            <a href="https://github.com/GitHubWxw/wxw-manage" target="_blank"> <i class="el-icon-document"></i></a>
+          </el-tooltip>
+        </div>
         <!-- 全屏显示 -->
         <div class="btn-fullscreen" @click="handleFullScreen">
           <el-tooltip effect="dark" :content="fullscreen ? `取消全屏` : `全屏`" placement="bottom">
@@ -17,26 +25,34 @@
         <!-- 消息中心 -->
         <div class="btn-bell">
           <el-tooltip effect="dark" :content="message ? `有${message}条未读消息` : `消息中心`" placement="bottom">
-            <router-link to="/tabs">
-              <i class="el-icon-bell"></i>
-            </router-link>
+            <el-badge :value="message" :max="99" class="item">
+              <router-link to="/tabs">
+                <i class="el-icon-bell"></i>
+              </router-link>
+            </el-badge>
           </el-tooltip>
           <span class="btn-bell-badge" v-if="message"></span>
         </div>
+
+        <!--颜色选择器 -->
+        <div class="btn-color">
+          <el-tooltip content="皮肤">
+            <el-color-picker v-model="skin_color" size="mini"></el-color-picker>
+          </el-tooltip>
+        </div>
+
         <!-- 用户头像 -->
         <div class="user-avator">
-          <img src="../../assets/img/img.jpg" />
+          <img src="https://gitee.com/wwxw/image/raw/master/logo/head/6rVVnOhLKd1C.jpg" />
         </div>
         <!-- 用户名下拉菜单 -->
         <el-dropdown class="user-name" trigger="click" @command="handleCommand">
           <span class="el-dropdown-link">
-            {{ username }}
-            <i class="el-icon-caret-bottom"></i>
+            {{ username }} <i class="el-icon-caret-bottom"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <a href="https://github.com/lin-xin/vue-manage-system" target="_blank">
-              <el-dropdown-item>项目仓库</el-dropdown-item>
-            </a>
+            <el-dropdown-item>关于 我</el-dropdown-item>
+            <el-dropdown-item>更新日志</el-dropdown-item>
             <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -47,12 +63,14 @@
 <script>
 import bus from "../common/bus";
 export default {
+  name: "导航栏",
   data() {
     return {
-      collapse: false,
-      fullscreen: false,
-      name: "linxin",
-      message: 2
+      collapse: false, // 是否隐藏侧边栏
+      fullscreen: false, // 是否全屏
+      skin_color: "#10E7B4", // 皮肤颜色
+      name: "半颗糖",
+      message: 999
     };
   },
   computed: {
@@ -115,7 +133,7 @@ export default {
   box-sizing: border-box;
   width: 100%;
   height: 70px;
-  font-size: 22px;
+  font-size: 18px;
   color: #fff;
 }
 .collapse-btn {
@@ -138,12 +156,20 @@ export default {
   height: 70px;
   align-items: center;
 }
+.btn-github {
+  transform: rotate(45deg);
+  margin-right: 5px;
+  font-size: 24px;
+  color: #fff;
+}
 .btn-fullscreen {
   transform: rotate(45deg);
   margin-right: 5px;
   font-size: 24px;
 }
-.btn-bell,
+.btn-bell {
+  margin-right: 30px;
+}
 .btn-fullscreen {
   position: relative;
   width: 30px;
@@ -162,6 +188,10 @@ export default {
   background: #f56c6c;
   color: #fff;
 }
+/* 继承CSS 设置源码图标为白色 */
+.btn-github .el-icon-document {
+  color: #fff;
+}
 .btn-bell .el-icon-bell {
   color: #fff;
 }
@@ -173,8 +203,8 @@ export default {
 }
 .user-avator img {
   display: block;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 .el-dropdown-link {

@@ -24,8 +24,7 @@
             <span>语言详情</span>
           </div>
           Vue
-          <el-progress :percentage="71.3" color="#42b983"></el-progress
-          >JavaScript
+          <el-progress :percentage="71.3" color="#42b983"></el-progress>JavaScript
           <el-progress :percentage="24.1" color="#f1e05a"></el-progress>CSS
           <el-progress :percentage="13.7"></el-progress>HTML
           <el-progress :percentage="5.9" color="#f56c6c"></el-progress>
@@ -70,9 +69,7 @@
         <el-card shadow="hover" style="height:403px;">
           <div slot="header" class="clearfix">
             <span>待办事项</span>
-            <el-button style="float: right; padding: 3px 0" type="text"
-              >添加</el-button
-            >
+            <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
           </div>
           <el-table :show-header="false" :data="todoList" style="width:100%;">
             <el-table-column width="40">
@@ -82,10 +79,7 @@
             </el-table-column>
             <el-table-column>
               <template slot-scope="scope">
-                <div
-                  class="todo-item"
-                  :class="{ 'todo-item-del': scope.row.status }"
-                >
+                <div class="todo-item" :class="{ 'todo-item-del': scope.row.status }">
                   {{ scope.row.title }}
                 </div>
               </template>
@@ -103,22 +97,12 @@
     <el-row :gutter="20">
       <el-col :span="12">
         <el-card shadow="hover">
-          <schart
-            ref="bar"
-            class="schart"
-            canvasId="bar"
-            :options="options"
-          ></schart>
+          <schart ref="bar" class="schart" canvasId="bar" :options="options"></schart>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="hover">
-          <schart
-            ref="line"
-            class="schart"
-            canvasId="line"
-            :options="options2"
-          ></schart>
+          <schart ref="line" class="schart" canvasId="line" :options="options2"></schart>
         </el-card>
       </el-col>
     </el-row>
@@ -127,7 +111,7 @@
 
 <script>
 import Schart from "vue-schart";
-import bus from "../common/bus";
+// import bus from "../common/bus";
 export default {
   name: "dashboard",
   data() {

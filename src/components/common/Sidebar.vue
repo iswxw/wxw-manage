@@ -1,15 +1,6 @@
 <template>
   <div class="sidebar">
-    <el-menu
-      class="sidebar-el-menu"
-      :default-active="onRoutes"
-      :collapse="collapse"
-      background-color="#324157"
-      text-color="#bfcbd9"
-      active-text-color="#20a0ff"
-      unique-opened
-      router
-    >
+    <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" unique-opened router>
       <template v-for="item in items">
         <template v-if="item.subs">
           <el-submenu :index="item.index" :key="item.index">
@@ -18,25 +9,11 @@
               <span slot="title">{{ item.title }}</span>
             </template>
             <template v-for="subItem in item.subs">
-              <el-submenu
-                v-if="subItem.subs"
-                :index="subItem.index"
-                :key="subItem.index"
-              >
+              <el-submenu v-if="subItem.subs" :index="subItem.index" :key="subItem.index">
                 <template slot="title">{{ subItem.title }}</template>
-                <el-menu-item
-                  v-for="(threeItem, i) in subItem.subs"
-                  :key="i"
-                  :index="threeItem.index"
-                  >{{ threeItem.title }}</el-menu-item
-                >
+                <el-menu-item v-for="(threeItem, i) in subItem.subs" :key="i" :index="threeItem.index">{{ threeItem.title }}</el-menu-item>
               </el-submenu>
-              <el-menu-item
-                v-else
-                :index="subItem.index"
-                :key="subItem.index"
-                >{{ subItem.title }}</el-menu-item
-              >
+              <el-menu-item v-else :index="subItem.index" :key="subItem.index">{{ subItem.title }}</el-menu-item>
             </template>
           </el-submenu>
         </template>
@@ -54,6 +31,7 @@
 <script>
 import bus from "../common/bus";
 export default {
+  name: "侧边栏",
   data() {
     return {
       collapse: false,
